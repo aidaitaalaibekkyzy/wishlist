@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вишлист</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            color: #333;
+        }
+        .wishlist-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        .item {
+            width: 300px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: white;
+            position: relative;
+        }
+        .item img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 10px;
+            visibility: hidden;
+        }
+        .item.selected .overlay {
+            visibility: visible;
+        }
+        .button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button.deselect {
+            background-color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <h1>Привет! Если хотите мне что-то подарить, выберите здесь :)</h1>
+    <p>Мне не удобно вам заказывать подарки, если хотите мне что-то подарить, то можете здесь выбрать, даже вместе подарить!)</p>
+    
+    <div class="wishlist-container">
+        <div class="item" id="item1">
+            <img src="https://basket-16.wbbasket.ru/vol2438/part243874/243874458/images/big/1.webp" alt="Мольберт">
+            <div class="overlay">Занято</div>
+            <button class="button" onclick="toggleSelection('item1')">Выбрать</button>
+        </div>
+        <div class="item" id="item2">
+            <img src="https://basket-05.wbbasket.ru/vol984/part98425/98425177/images/big/1.webp" alt="Мастихины">
+            <div class="overlay">Занято</div>
+            <button class="button" onclick="toggleSelection('item2')">Выбрать</button>
+        </div>
+        <div class="item" id="item3">
+            <img src="https://basket-03.wbbasket.ru/vol376/part37647/37647405/images/big/1.webp" alt="Масленые краски">
+            <div class="overlay">Занято</div>
+            <button class="button" onclick="toggleSelection('item3')">Выбрать</button>
+        </div>
+        <div class="item" id="item4">
+            <img src="https://basket-04.wbbasket.ru/vol439/part43931/43931034/images/big/1.webp" alt="Графический планшет">
+            <div class="overlay">Занято</div>
+            <button class="button" onclick="toggleSelection('item4')">Выбрать</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleSelection(itemId) {
+            const item = document.getElementById(itemId);
+            const button = item.querySelector('.button');
+            
+            if (item.classList.contains('selected')) {
+                item.classList.remove('selected');
+                button.textContent = 'Выбрать';
+                button.classList.remove('deselect');
+            } else {
+                item.classList.add('selected');
+                button.textContent = 'Отменить выбор';
+                button.classList.add('deselect');
+            }
+        }
+    </script>
+</body>
+</html>
